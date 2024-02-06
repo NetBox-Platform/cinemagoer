@@ -2152,7 +2152,7 @@ class DOMHTMLSeasonEpisodesParser(DOMParserBase):
             key='series title',
             extractor=Path('//h2[@data-testid="subtitle"]/text()')
         ),
-        Rule(
+        Rule( # dummy comment
             key='_seasons',
             extractor=Path(
                 foreach='//a[@data-testid="tab-season-entry"]',
