@@ -8,8 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        fetch-depth: 0
-        ref: 'test222'
+        with:
+          fetch-depth: 0
+          ref: test222
       - name: Merge upstream
         run: |
           git config --global user.name 'Github Action'
