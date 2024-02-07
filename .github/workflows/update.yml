@@ -10,13 +10,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: test222
+          ref: main
       - name: Merge upstream
         run: |
           git config --global user.name 'Github Action'
           git config --global user.email 'netbox@users.noreply.github.com'
-          # git reset --hard HEAD~4
+          # git reset --hard HEAD~4  # NEVER UNCOMMENT
           git remote add upstream https://github.com/cinemagoer/cinemagoer.git
           git pull upstream master
-          git push origin test222 
+          git push origin main 
           
