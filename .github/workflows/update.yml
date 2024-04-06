@@ -19,7 +19,7 @@ jobs:
     
           git remote add upstream https://github.com/cinemagoer/cinemagoer.git
           git checkout -b temp-branch
-          git pull upstream master
+          git pull --ff-only upstream master
           git checkout main
           git merge temp-branch main 
           git push origin main 
