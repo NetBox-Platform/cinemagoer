@@ -16,11 +16,19 @@ jobs:
           git config --global user.name 'Github Action'
           git config --global user.email 'netbox@users.noreply.github.com'
           # git reset --hard HEAD~4  # NEVER UNCOMMENT
-
           git remote add upstream https://github.com/cinemagoer/cinemagoer.git
-          git checkout -b temp-branch
-          git pull --ff-only upstream master
-          git checkout main
-          git merge --no-ff temp-branch main
+          git pull --rebase upstream master
           git push origin main
 
+#
+#          git config --global user.name 'Github Action'
+#          git config --global user.email 'netbox@users.noreply.github.com'
+#          # git reset --hard HEAD~4  # NEVER UNCOMMENT
+#
+#          git remote add upstream https://github.com/cinemagoer/cinemagoer.git
+#          git checkout -b temp-branch
+#          git pull --ff-only upstream master
+#          git checkout main
+#          git merge --no-ff temp-branch main
+#          git push origin main
+#
