@@ -24,6 +24,10 @@ import gettext
 import os
 
 LOCALE_DIR = os.path.dirname(__file__)
+def dummy_translation(domain, localedir=None, languages=None, class_=None, fallback=False, codeset=None):
+    return gettext.NullTranslations()
+
+gettext.translation = dummy_translation
 
 translation = gettext.translation('imdbpy', LOCALE_DIR)
 _ = translation.gettext
