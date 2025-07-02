@@ -406,9 +406,9 @@ class DOMHTMLMovieParser(DOMParserBase):
         Rule(
             key='country codes',
             extractor=Path(
-                foreach='//td[starts-with(text(), "Countr")]/..//li/a',
+                foreach='//li[@data-testid="title-details-origin"]/.//li/a',
                 path='./@href',
-                transform=lambda x: x.split('/')[2].strip().lower()
+                transform=lambda x: re.sub(r".*country_of_origin=([A-z]+)&?.*", r"\1", x.lower())
             )
         ),
         Rule(
@@ -607,7 +607,7 @@ class DOMHTMLMovieParser(DOMParserBase):
         ),
         Rule(
             key='tv series link',
-            extractor=Path('//a[starts-with(text(), "All Episodes")]/@href')
+            extractor=Path('//a[@data-testid="hero-title-block__series-link"]/@href')
         ),
         Rule(
             key='akas',
@@ -688,7 +688,7 @@ class DOMHTMLMovieParser(DOMParserBase):
         ),
         Rule(
             key='rating',
-            extractor=Path('(//span[@class="ipl-rating-star__rating"])[1]/text()')
+            extractor=Path('//span[contains(@class, "ipc-rating-star--rating")]/text()')
         ),
         Rule(
             key='votes',
@@ -696,7 +696,7 @@ class DOMHTMLMovieParser(DOMParserBase):
         ),
         Rule(
             key='cover url',
-            extractor=Path('//img[@alt="Poster"]/@src')
+            extractor=Path('//div[contains(@data-testid, "hero-media__poster")]//img/@src')
         ),
         Rule(
             key='imdbID',
